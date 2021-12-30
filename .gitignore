@@ -102,3 +102,14 @@ dist
 
 # TernJS port file
 .tern-port
+
+# .idea dir
+*.idea
+
+# package locks
+*package-lock.json
+*yarn.lock
+*pnpm-lock.yaml
+
+# Build directory
+*build
