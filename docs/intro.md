@@ -2,34 +2,26 @@
 sidebar_position: 1
 ---
 
-# Tutorial Intro
+# Prerequisites
+First of all, galactica requires <code>Node.js v16</code> **or later** and:
+  - TypeScript (installed globally)
+  - Linux distribution that uses glibc **or**:
+  - A pc that runs Windows™ 10 at least **or**
+  - Any OS which supports Docker™
 
-Let's discover **Docusaurus in less than 5 minutes**.
+## Links for the prerequisites
 
-## Getting Started
+  - #### Node.js: https://nodejs.org/en/download/
+  - #### My favorite Linux server distro: https://www.debian.org/download 
+  (or Windows 10) **or**
+  - #### Docker: https://www.docker.com/get-started
 
-Get started by **creating a new site**.
+## Install TypeScript globally
+  <sup>*This step is not required for Docker</sup>
 
-Or **try Docusaurus immediately** with **[docusaurus.new](https://docusaurus.new)**.
+To install execute this command with root or "administrator" permissions
 
-## Generate a new site
-
-Generate a new Docusaurus site using the **classic template**:
-
-```shell
-npm init docusaurus@latest my-website classic
+```bash
+npm install -g typescript
 ```
-
-## Start your site
-
-Run the development server:
-
-```shell
-cd my-website
-
-npx docusaurus start
-```
-
-Your site starts at `http://localhost:3000`.
-
-Open `docs/intro.md` and edit some lines: the site **reloads automatically** and displays your changes.
+<sup>P.S. If you use a different package manager you may change the command accordingly</sup>
