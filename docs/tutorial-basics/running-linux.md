@@ -3,7 +3,7 @@ sidebar_position: 4
 ---
 
 # Running on Linux
-Running galactica from bare metal is much easier than running it on [Docker](./running-docker.md) and generally uses less resources than containerizing it.
+Running galactica from bare metal is much easier than running it on [Docker](./running-docker.mdx) and generally uses less resources than containerizing it.
 
 ## Dependencies
 The dependencies are mentioned in the [prerequisites](../intro.md) section they can still be downloaded with your distribution's package manager but make sure that your `nodejs` package is **at least** v16 you can check it by running:
