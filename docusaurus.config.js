@@ -26,12 +26,7 @@ const config = {
           // Please change this to your repo.
           editUrl: 'https://github.com/jebediah47/galactica-bot-docs/tree/main',
         },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          editUrl:
-            'https://github.com/jebediah47/galactica-bot-docs/tree/main',
-        },
+        blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -54,12 +49,6 @@ const config = {
             docId: 'intro',
             position: 'left',
             label: 'Documentation',
-          },
-          {to: '/blog', label: 'Changelog', position: 'left'},
-          {
-            href: 'https://github.com/jebediah47/galactica-bot',
-            label: 'GitHub',
-            position: 'right',
           },
         ],
       },
@@ -95,10 +84,6 @@ const config = {
           {
             title: 'More',
             items: [
-              {
-                label: 'Changelog',
-                to: '/blog',
-              },
               {
                 label: 'GitHub',
                 href: 'https://github.com/jebediah47/galactica-bot',

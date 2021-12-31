@@ -8,7 +8,7 @@ First of all, galactica requires <code>Node.js v16</code> **or later** and:
   - Linux distribution that uses glibc **or**:
   - A pc that runs Windows™ 10 at least **or**
   - Any OS which supports Docker™
-
+  <sup>*Note that you don't need any dependencies to run the bot with Docker, just the Docker software</sup>
 ## Links for the prerequisites
 
   - #### Node.js: https://nodejs.org/en/download/
@@ -17,9 +17,8 @@ First of all, galactica requires <code>Node.js v16</code> **or later** and:
   - #### Docker: https://www.docker.com/get-started
 
 ## Install TypeScript globally
-  <sup>*This step is not required for Docker</sup>
 
-To install execute this command with root or "administrator" permissions
+To install, execute this command with root or "administrator" permissions
 
 ```bash
 npm install -g typescript
