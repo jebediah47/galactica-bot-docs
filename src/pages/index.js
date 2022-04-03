@@ -31,7 +31,7 @@ export default function Home() {
   return (
     <Layout
       title={"Galactica Bot Documentation"}
-      description="This is the official documentation website of the galactica Discord bot. <head />"
+      description="The official documentation website of the galactica Discord bot. <head />"
     >
       <HomepageHeader />
       <main>
