@@ -22,4 +22,4 @@ First find the `config.json` file on the root directory of the bot and then edit
   - **BOT_PRESENCE** will change you bot's rich presence [example on discord website](https://discord.com/rich-presence).
   - **MUSIC_IS_ENABLED** this will enable galactica's music commands, note that this value is *boolean*
   - **BOT_PRESENCE_TYPE** sets you bot's presence type ***PLAYING, WATCHING, LISTENING, COMPETING*** must be *uppercase* **only**.
-  - **MODLOGS_CHANNEL_NAME** is the channel where the bot's logs `(like when it's shut down)` are going to be sent.
+  - **MODLOGS_CHANNEL_NAME** is the channel where the bot's logs `(like when a member leaves)` are going to be sent.
