@@ -13,7 +13,7 @@ First of all, galactica requires <code>Node.js v16</code> **or later** and:
 
   - #### Node.js: https://nodejs.org/en/download/
   - #### My favorite Linux server distro: https://www.debian.org/download 
-  (or Windows 10) **or**
+  (or Windows 10/11) **or**
   - #### Docker: https://www.docker.com/get-started
 
 ## Install TypeScript globally

@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'galactica-bot',
-  tagline: 'A free bot to get you Discord™ server up and running!',
+  tagline: 'A free bot to get your Discord™ server up and running!',
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/',
   onBrokenLinks: 'throw',
