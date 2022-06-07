@@ -40,7 +40,7 @@ const config = {
       navbar: {
         title: 'galactica-bot',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'Galactica bot logo',
           src: 'img/logo.svg',
         },
         items: [
@@ -96,6 +96,11 @@ const config = {
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
+      },
+      colorMode: {
+        defaultMode: 'dark',
+        disableSwitch: false,
+        respectPrefersColorScheme: false,
       },
     }),
 };
