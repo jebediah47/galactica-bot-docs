@@ -12,8 +12,12 @@ First find the `config.json` file on the root directory of the bot and then edit
     "TOKEN": "YOUR_BOT_TOKEN",
     "BOT_PRESENCE": "YOUR_BOT_PRESENCE",
     "MUSIC_IS_ENABLED": true,
-    "BOT_PRESENCE_TYPE": "YOUR_BOT_PRESENCE_TYPE",
-    "MODLOGS_CHANNEL_NAME": "MODLOGS_CHANNEL_NAME"
+    "BOT_PRESENCE_TYPE": "WATCHING",
+    "MODLOGS_CHANNEL_NAME": "MODLOGS_CHANNEL_NAME",
+    "SERVER_OPTIONS": {
+      "ENABLED": true,
+      "PORT": null
+    }
   }
   ```
   - **BOT_TOKEN** is where you put you bot's token and if you don't have one you can get one from the [discord developer portal](https://discord.com/developers/applications).
@@ -21,3 +25,6 @@ First find the `config.json` file on the root directory of the bot and then edit
   - **MUSIC_IS_ENABLED** this will enable galactica's music commands, note that this value is *boolean*
   - **BOT_PRESENCE_TYPE** sets you bot's presence type ***PLAYING, WATCHING, LISTENING, COMPETING*** must be *uppercase* **only**.
   - **MODLOGS_CHANNEL_NAME** is the channel where the bot's logs `(like when a member leaves)` are going to be sent.
+  - **SERVER_OPTIONS**:  
+⠀⠀**ENABLED** sets if the Express.js server will be enabled on client startup.  
+⠀⠀**PORTS** if server is enabled, sets the port that the server will listen to. If *null* the server will listen at port 3000.
