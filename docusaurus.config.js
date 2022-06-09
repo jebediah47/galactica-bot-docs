@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'galactica-bot',
   tagline: 'A free bot to get your Discord™ server up and running!',
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://galacticabot.vercel.app',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -68,16 +68,12 @@ const config = {
             title: 'Community',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
-              },
-              {
                 label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                href: 'https://discord.gg/nQd5HeD2xz',
               },
               {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                label: 'GitHub Issues',
+                href: 'https://github.com/jebediah47/galactica-bot/issues',
               },
             ],
           },
