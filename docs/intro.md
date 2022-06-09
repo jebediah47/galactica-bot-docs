@@ -15,6 +15,7 @@ First of all, galactica requires <code>Node.js v16</code> **or later** and:
   - #### My favorite Linux server distro: https://www.debian.org/download 
   (or Windows 10/11) **or**
   - #### Docker: https://www.docker.com/get-started
+  - #### FFmpeg & @discordjs/opus [for music commands](./distube-tut/getting-started)
 
 ## Install TypeScript globally
 
