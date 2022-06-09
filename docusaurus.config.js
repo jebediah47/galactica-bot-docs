@@ -87,7 +87,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Christian Llupo and contributors. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Christian Llupo. Made with ❤️`,
       },
       prism: {
         theme: lightCodeTheme,
