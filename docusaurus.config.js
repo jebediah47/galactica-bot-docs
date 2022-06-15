@@ -1,34 +1,34 @@
 // @ts-nocheck
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require('prism-react-renderer/themes/github');
-const darkCodeTheme = require('prism-react-renderer/themes/dracula');
+const lightCodeTheme = require("prism-react-renderer/themes/nightOwlLight");
+const darkCodeTheme = require("prism-react-renderer/themes/nightOwl");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'galactica-bot',
-  tagline: 'A free bot to get your Discord™ server up and running!',
-  url: 'https://galacticabot.vercel.app',
-  baseUrl: '/',
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
-  organizationName: 'jebediah47', // Usually your GitHub org/user name.
-  projectName: 'galactica-bot', // Usually your repo name.
+  title: "galactica-bot",
+  tagline: "A free bot to get your Discord™ server up and running!",
+  url: "https://galacticabot.vercel.app",
+  baseUrl: "/",
+  onBrokenLinks: "throw",
+  onBrokenMarkdownLinks: "warn",
+  favicon: "img/favicon.ico",
+  organizationName: "jebediah47", // Usually your GitHub org/user name.
+  projectName: "galactica-bot", // Usually your repo name.
 
   presets: [
     [
-      'classic',
+      "classic",
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: require.resolve('./sidebars.js'),
+          sidebarPath: require.resolve("./sidebars.js"),
           // Please change this to your repo.
-          editUrl: 'https://github.com/jebediah47/galactica-bot-docs/tree/main',
+          editUrl: "https://github.com/jebediah47/galactica-bot-docs/tree/main",
         },
         blog: false,
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve("./src/css/custom.css"),
         },
       }),
     ],
@@ -38,51 +38,47 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       navbar: {
-        title: 'galactica-bot',
-        logo: {
-          alt: 'Galactica bot logo',
-          src: 'img/logo.svg',
-        },
+        title: "galactica-bot",
         items: [
           {
-            type: 'doc',
-            docId: 'intro',
-            position: 'left',
-            label: 'Documentation',
+            type: "doc",
+            docId: "intro",
+            position: "left",
+            label: "Documentation",
           },
         ],
       },
       footer: {
-        style: 'dark',
+        style: "dark",
         links: [
           {
-            title: 'Docs',
+            title: "Docs",
             items: [
               {
-                label: 'Get started',
-                to: '/docs/intro',
+                label: "Get started",
+                to: "/docs/intro",
               },
             ],
           },
           {
-            title: 'Community',
+            title: "Community",
             items: [
               {
-                label: 'Discord',
-                href: 'https://discord.gg/nQd5HeD2xz',
+                label: "Discord",
+                href: "https://discord.gg/nQd5HeD2xz",
               },
               {
-                label: 'GitHub Issues',
-                href: 'https://github.com/jebediah47/galactica-bot/issues',
+                label: "GitHub Issues",
+                href: "https://github.com/jebediah47/galactica-bot/issues",
               },
             ],
           },
           {
-            title: 'More',
+            title: "More",
             items: [
               {
-                label: 'GitHub',
-                href: 'https://github.com/jebediah47/galactica-bot',
+                label: "GitHub",
+                href: "https://github.com/jebediah47/galactica-bot",
               },
             ],
           },
@@ -94,7 +90,7 @@ const config = {
         darkTheme: darkCodeTheme,
       },
       colorMode: {
-        defaultMode: 'dark',
+        defaultMode: "dark",
         disableSwitch: false,
         respectPrefersColorScheme: false,
       },
