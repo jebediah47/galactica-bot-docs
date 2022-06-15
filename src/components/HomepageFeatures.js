@@ -29,7 +29,7 @@ const FeatureList = [
     description: (
       <>
         Extend or customize galactica with Discord.js. Galactica can
-        be extended while reusing the same command handler and framework
+        be modified while reusing the same command handler and framework
       </>
     ),
   },
