@@ -1,0 +1,63 @@
+---
+sidebar_position: 1
+---
+
+# Prerequisites
+
+First of all, galactica requires <code>Node.js v16</code> **or later** and:
+
+- TypeScript (installed globally)
+- Linux distribution that uses glibc **or**
+- A pc that runs Windows™ 10 at least **or**
+- Any OS which supports Docker™
+
+## Links for the prerequisites
+
+- Node.js: https://nodejs.org/en/download/
+- My favorite Linux server distro: https://www.debian.org/download  
+  (or Windows 10/11) **or**
+- Docker: https://www.docker.com/get-started
+- FFmpeg & @discordjs/opus [for music commands](./distube-tut/getting-started)
+
+## Installing TypeScript globally
+
+To install, execute this command with administrator permissions
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+<Tabs
+  defaultValue="npm"
+  values={[
+    { label: "npm", value: "npm" },
+    { label: "yarn", value: "yarn" },
+    { label: "pnpm", value: "pnpm" },
+  ]}
+>
+  <TabItem value="npm">
+
+  ```shell
+  npm install --global typescript
+  ```
+
+  </TabItem>
+
+  <TabItem value="yarn">
+
+  ```shell
+  yarn global add typescript
+  ```
+
+  </TabItem>
+
+  <TabItem value="pnpm">
+
+  ```shell
+  pnpm add --global typescript
+  ```
+
+  </TabItem>
+</Tabs>
+
+## Need support?
+If you require further assistance please join our [Discord server](https://discord.gg/nQd5HeD2xz). And we will try to help you with any problem with the bot or with programming generally, we are a community that do everything-tech! ***Helping others is the way we help ourselves***.
