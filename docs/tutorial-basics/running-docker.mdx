@@ -3,6 +3,7 @@ sidebar_position: 3
 ---
 
 # Running the bot (Docker)
+
 Running galactica via Docker is probably the easiest and best way to do so because you just need to install Docker and nothing else, all the dependencies are managed by the container itself and this means that you host machine will not be bloated with the dependencies of the bot and everything will be isolated inside of the container.
 
 :::caution
@@ -11,8 +12,10 @@ Using Docker may consume more resources than running it bare metal `especially o
 
 #### First if you haven't done yet, you need to download Docker from the [prerequisites](../intro.md) page or on Linux just by using your distro's package manager.
 
-## Building the container image
+## Building the Docker image
+
 To build the image first you have to go to the root directory of the bot and then run this command:
+
 ```bash
 docker build -t archiso .
 ```
@@ -22,26 +25,34 @@ What this is gonna do is that it's going to build the image according to the `Do
 **NOTE:** You need to have your bot already configured before you build the image because if you do it after the container is not going to receive the changes!
 
 ## Running the container
+
 Now that we have built the image we need actually run it to do so just run:
+
 ```bash
 docker run -it archiso
 ```
 
 ## Stopping the container
+
 First step of stopping the container is to find the container ID to do so run:
+
 ```bash
 docker container ls -a
 ```
 
 This command will list all of the containers are on your system and it's output should look something like this:
+
 ```title="output:"
 CONTAINER ID    IMAGE        COMMAND                  CREATED        STATUS
 b28cbaa91f15    archiso      "/entrypoint.sh couc…"   5 hours ago    Exited (0) 3 hours ago
 ```
+
 the container ID is the first parameter that should show up, to stop the container just run:
+
 ```bash
 docker stop <CONTAINER ID>
 ```
+
 And make sure to change the ID according to your containers one accordingly, also don't type the brackets
 
 :::warning
@@ -49,19 +60,25 @@ If you want to rerun the container you should do the process mentioned below oth
 :::
 
 ## Rerunning the container
+
 Rerunning the container is simple copy it's ID and then run:
+
 ```bash
 docker run -it <CONTAINER ID>
 ```
 
 ## Troubleshooting
+
 If you get an error like this:
+
 ```
 Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?
 ```
 
 Then the issue is that the docker service is not running, to start it run with administrator privileges:
+
 ```bash
 dockerd
 ```
+
 this should fix the issue
