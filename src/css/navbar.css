@@ -18,3 +18,13 @@
 img {
   border-radius: 10px;
 }
+
+html[data-theme="light"] .navbar__link,
+.navbar__title,
+.navbar__items {
+  color: #e5e7eb;
+}
+
+html[data-theme="light"] .navbar__items--right--hover {
+  background-color: #063c68;
+}
