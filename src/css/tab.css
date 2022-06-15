@@ -1,0 +1,17 @@
+.tabs__item {
+  align-items: center;
+  height: 48px;
+  margin-bottom: 8;
+  margin-right: 8px;
+}
+
+.tabs__item:hover {
+  background-color: #1db954;
+}
+
+.tabs__item--active {
+  background-color: #1db954;
+  border: 0;
+  border-radius: 6px;
+  color: #e5e7eb;
+}
