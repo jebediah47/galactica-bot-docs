@@ -1,0 +1,20 @@
+.navbar--fixed-top {
+  background-color: #011627;
+}
+
+.navbar__link--active {
+  background: #063c68;
+  color: #e5e7eb;
+}
+
+.navbar__item {
+  align-items: center;
+  border-radius: 10px;
+  display: flex;
+  height: 100%;
+}
+
+.navbar__link,
+img {
+  border-radius: 10px;
+}
