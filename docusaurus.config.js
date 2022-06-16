@@ -1,6 +1,4 @@
 // @ts-nocheck
-// Note: type annotations allow type checking and IDEs autocompletion
-
 const lightCodeTheme = require("prism-react-renderer/themes/nightOwlLight");
 const darkCodeTheme = require("prism-react-renderer/themes/nightOwl");
 
@@ -12,9 +10,9 @@ const config = {
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  favicon: "img/favicon.ico",
-  organizationName: "jebediah47", // Usually your GitHub org/user name.
-  projectName: "galactica-bot", // Usually your repo name.
+  favicon: "img/galactica-bot-logo.ico",
+  organizationName: "jebediah47",
+  projectName: "galactica-bot",
 
   presets: [
     [
@@ -23,7 +21,6 @@ const config = {
       ({
         docs: {
           sidebarPath: require.resolve("./sidebars.js"),
-          // Please change this to your repo.
           editUrl: "https://github.com/jebediah47/galactica-bot-docs/tree/main",
         },
         blog: false,
