@@ -8,6 +8,13 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+  font-family: "Pacaembu";
+  src: url("../../fonts/pacaembu_medium-webfont.woff2") format("woff2"),
+  url("../../fonts/pacaembu_medium-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 
 :root {
   --ifm-color-primary: #1db954;
@@ -21,6 +28,14 @@
   --ifm-font-family-base: "Lexend Deca", sans-serif;
   --ifm-font-family-base: "Lexend Deca", sans-serif;
   --ifm-font-family-monospace: "CascadiaCode";
+}
+
+.hero__title {
+  font-family: "Pacaembu";
+}
+
+.footer__copyright {
+  font-family: "Pacaembu";
 }
 
 .docusaurus-highlight-code-line {
