@@ -17,10 +17,10 @@ Using Docker may consume more resources than running it bare metal `especially o
 To build the image first you have to go to the root directory of the bot and then run this command:
 
 ```bash
-docker build -t archiso .
+docker build -t galactica-bot .
 ```
 
-What this is gonna do is that it's going to build the image according to the `Dockerfile` and name it `archiso` (which is the distribution that the container runs)
+What this is gonna do is that it's going to build the image according to the `Dockerfile` and name it `galactica-bot`.
 
 **NOTE:** You need to have your bot already configured before you build the image because if you do it after the container is not going to receive the changes!
 
@@ -29,7 +29,7 @@ What this is gonna do is that it's going to build the image according to the `Do
 Now that we have built the image we need actually run it to do so just run:
 
 ```bash
-docker run -it archiso
+docker run -it galactica-bot
 ```
 
 ## Stopping the container
@@ -42,9 +42,9 @@ docker container ls -a
 
 This command will list all of the containers are on your system and it's output should look something like this:
 
-```title="output:"
+```text title="Command output:"
 CONTAINER ID    IMAGE        COMMAND                  CREATED        STATUS
-b28cbaa91f15    archiso      "/entrypoint.sh couc…"   5 hours ago    Exited (0) 3 hours ago
+b28cbaa91f15    galacti...   "/entrypoint.sh couc…"   5 hours ago    Exited (0) 3 hours ago
 ```
 
 the container ID is the first parameter that should show up, to stop the container just run:
