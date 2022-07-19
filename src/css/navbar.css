@@ -20,7 +20,10 @@ img {
 }
 
 html[data-theme="light"] .navbar__link,
-.navbar__title,
-.navbar__items {
-  color: #1db954;
+.navbar__title {
+  color: #e5e7eb;
+}
+
+html[data-theme="light"] .navbar__items {
+  color: #fdb813;
 }
