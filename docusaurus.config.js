@@ -5,6 +5,7 @@ const darkCodeTheme = require("prism-react-renderer/themes/nightOwl");
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "galactica-bot",
+  staticDirectories: ["public"],
   tagline: "A free bot to get your Discord™ server up and running!",
   url: "https://galacticabot.vercel.app",
   baseUrl: "/",
