@@ -7,91 +7,83 @@ sidebar_position: 2
 ## Useful info
 
 :::tip info
-It is recommended to edit `JSON` files with a text editor, I strongly recommend [`Visual Studio Code`](https://code.visualstudio.com/) which is completely free and open-source. For Linux you can download the binary from the VSCode website if available or download your distribution's package accordingly.
+It is recommended to edit `.env` files with a text editor, I strongly recommend [`Visual Studio Code`](https://code.visualstudio.com/) which is completely free and open-source. For Linux you can download the binary from the VSCode website if available or download your distribution's package accordingly.
 :::
 
 ## Editing the config file
 
-Setting up galactica was meant to be easy and done by just editing a `json` file so you can change the token, prefix, presence and logs channel name for the bot.
+Setting up galactica was meant to be easy and done by just editing a `env` file so you can change crucial bot settings.
 
-First find the `config.json` file on the root directory of the bot and then edit these parameters:
+First find the `.env.example` file, then rename it to `.env` and start editing it:
 
-```json title="config.json"
-{
-  "TOKEN": "YOUR_BOT_TOKEN",
-  "BOT_PRESENCE": "YOUR_BOT_PRESENCE",
-  "BOT_PRESENCE_TYPE": "WATCHING",
-  "SERVER_OPTIONS": {
-    "ENABLED": true,
-    "PORT": null
-  }
-}
+```py title=".env"
+### Galactica bot related vars ###
+TOKEN="YOUR_BOT_TOKEN"
+BOT_PRESENCE="YOUR_BOT_PRESENCE"
+# Values: PLAYING, LISTENING, WATCHING, STREAMING, COMPETING
+BOT_PRESENCE_TYPE="WATCHING"
+SERVER_ENABLED=false
+SERVER_PORT=3001
+
+### Prisma related vars ###
+DATABASE_URL="YOUR_DATABASE_URL"
 ```
 
 ## Configuration parameters
 
-| Variable                 | type                                                                                                                                                                                   | Default    | Description                                                                                                                                 |
-| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `TOKEN`                  | [string](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#literal-types)                                                                                             | null       | The bot's token, if you don't have one you can get one from the [ Discord Developer portal ](https://discord.com/developers/applications) . |
-| `BOT_PRESENCE`           | [string](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#literal-types)                                                                                             | null       | The presence of the bot.                                                                                                                    |
-| `BOT_PRESENCE_TYPE`      | [string](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#literal-types)                                                                                             | "WATCHING" | Sets the presence type of the bot.                                                                                                          |
-| `SERVER_OPTIONS.ENABLED` | [boolean](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#literal-types)                                                                                            | true       | Starts a express.js server to check the bot's current status.                                                                               |
-| `SERVER_OPTIONS.PORT`    | [number](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#literal-types) or [null](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#literal-types) | null       | The port the server will listen to, _null=3001_.                                                                                            |
+| Variable                 | type                                                                                       | Default    | Description                                                                                                                                 |
+| ------------------------ | -------------------------------------------------------------------------------------------| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `TOKEN`                  | [string](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#literal-types) | null       | The bot's token, if you don't have one you can get one from the [ Discord Developer portal ](https://discord.com/developers/applications) . |
+| `BOT_PRESENCE`           | [string](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#literal-types) | null       | The presence of the bot.                                                                                                                    |
+| `BOT_PRESENCE_TYPE`      | [string](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#literal-types) | "WATCHING" | Sets the presence type of the bot.                                                                                                          |
+| `SERVER_ENABLED`         | [boolean](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#literal-types)| true       | Starts a express.js server to check the bot's current status.                                                                               |
+| `SERVER_PORT`            | [number](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#literal-types) | 3001       | The port the server will listen to _default=3001_.                                                                                            |
 
 ## Configuring the database
 
 Galactica uses the `SQLite` database by default which doesn't require an external database connection. It works as a part of the application.
 
 ### Using external databases
-Due to Galactica using the Prisma Object Relational Mapper, it supports any `SQL` database by default, to change the default database edit the `.env` file.
+Due to Galactica using the Prisma Object Relational Mapper, it supports most `SQL` database with little to minimal configuration,
+to change the default database edit the `.env` file. To use a different database you must edit the `prisma/schema.prisma` file.
+Most of the time you just need to change the provider field but for more info visit [prisma docs](https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#datasource).
 
+```prisma
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "YOUR_DATABASE_PROVIDER"
+  url      = env("DATABASE_URL")
+}
+
+model GuildConfigs {
+  id               Int      @id @default(autoincrement())
+  guildID          String   @unique
+  guildName        String
+  dateJoined       DateTime @default(now())
+  modLogsIsEnabled Boolean  @default(false)
+  modLogsChannelID String?  @unique
+  musicIsEnabled   Boolean  @default(true)
+
+  @@index([guildID])
+}
+```
+
+Then you will also need to edit your `DATABASE_URL` connection string in `.env`.
 ```text title=".env"
--- DATABASE_URL="file:./database.db"
+--- DATABASE_URL="file:./database.db"
 
-++ DATABASE_URL="SQL_DATABASE"://USER:PASSWORD@HOST:PORT/DATABASE"
++++ DATABASE_URL="SQL_DATABASE"://USER:PASSWORD@HOST:PORT/DATABASE"
 ```
 
 ## Pushing Prisma queries to database
 
-To push the SQL queries to the database, we need to first create a Prisma dev migration.
-
 import Tabs from "@theme/Tabs";
 import TabItem from "@theme/TabItem";
 
-<Tabs
-  defaultValue="npx"
-  values={[
-    { label: "npx", value: "npx" },
-    { label: "yarn", value: "yarn" },
-    { label: "pnpx", value: "pnpx" },
-  ]}
->
-  <TabItem value="npx">
-
-  ```shell
-  npx prisma migrate dev --create-only
-  ```
-
-  </TabItem>
-
-  <TabItem value="yarn">
-
-  ```shell
-  yarn run prisma migrate dev --create-only
-  ```
-
-  </TabItem>
-
-  <TabItem value="pnpx">
-
-  ```shell
-  pnpx prisma migrate dev --create-only
-  ```
-
-  </TabItem>
-</Tabs>
-
-Now we need to push the changes to the database, to do so run:
+Now we need to push the changes to the database and generate the according prisma client types, to do so run:
 
 <Tabs
   defaultValue="npx"
@@ -112,7 +104,7 @@ Now we need to push the changes to the database, to do so run:
   <TabItem value="yarn">
 
   ```shell
-  yarn run prisma db push
+  yarn prisma db push
   ```
 
   </TabItem>
@@ -120,26 +112,30 @@ Now we need to push the changes to the database, to do so run:
   <TabItem value="pnpx">
 
   ```shell
-  pnpx prisma db push
+  pnpm prisma db push
   ```
 
   </TabItem>
 </Tabs>
 
-And finally we need to compile our Prisma client by running:
+### Note for [planetscale](https://planetscale.com) users
+If using planetscale prisma does require some extra configuration the first part which is the schema file is already covered
+by galactica-bot, and it's located in `prisma/schema.planetscale.prisma`. The `db push` command won't work though because
+it doesn't know where [the schema is located](https://www.prisma.io/docs/reference/api-reference/command-reference#arguments-4),
+thankfully galactica includes a package.json script which points to the planetscale schema 🥳, to use it just run:
 
 <Tabs
-  defaultValue="npx"
+  defaultValue="npm"
   values={[
-    { label: "npx", value: "npx" },
+    { label: "npm", value: "npm" },
     { label: "yarn", value: "yarn" },
-    { label: "pnpx", value: "pnpx" },
+    { label: "pnpm", value: "pnpm" },
   ]}
 >
-  <TabItem value="npx">
+  <TabItem value="npm">
 
   ```shell
-  npx prisma generate
+  npm run prisma:planetscale
   ```
 
   </TabItem>
@@ -147,15 +143,15 @@ And finally we need to compile our Prisma client by running:
   <TabItem value="yarn">
 
   ```shell
-  yarn run prisma generate
+  yarn prisma:planetscale
   ```
 
   </TabItem>
 
-  <TabItem value="pnpx">
+  <TabItem value="pnpm">
 
   ```shell
-  pnpx prisma generate
+  pnpm prisma:planetscale
   ```
 
   </TabItem>
