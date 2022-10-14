@@ -7,42 +7,92 @@ sidebar_position: 2
 ## Useful info
 
 :::tip info
-It is recommended to edit `.env` files with a text editor, I strongly recommend [`Visual Studio Code`](https://code.visualstudio.com/) which is completely free and open-source. For Linux you can download the binary from the VSCode website if available or download your distribution's package accordingly.
+It is recommended to edit `.js` files with a text editor, I strongly recommend [`Visual Studio Code`](https://code.visualstudio.com/) which is completely free and open-source. For Linux you can download the binary from the VSCode website if available or download your distribution's package accordingly.
 :::
 
 ## Editing the config file
 
-Setting up galactica was meant to be easy and done by just editing a `env` file so you can change crucial bot settings.
+### The application's token
 
-First find the `.env.example` file, then rename it to `.env` and start editing it:
+Setting up galactica is quite an easy process, and it is recommended to do it before starting the bot for the first time.
 
-```py title=".env"
-### Galactica bot related vars ###
-TOKEN="YOUR_BOT_TOKEN"
-BOT_PRESENCE="YOUR_BOT_PRESENCE"
-# Values: PLAYING, LISTENING, WATCHING, STREAMING, COMPETING
-BOT_PRESENCE_TYPE="WATCHING"
-SERVER_ENABLED=false
-SERVER_PORT=3001
+First we need to export the `GALACTICA_TOKEN` environment variable, this is the token that you got from the [Discord Developer Portal](https://discord.com/developers/applications) when you created your bot application.
+On [`UNIX-based`](https://en.wikipedia.org/wiki/List_of_Unix_systems) systems you can do this by editing your
+[`.bashrc`](https://www.digitalocean.com/community/tutorials/bashrc-file-in-linux) file and adding the following line on Windows you need to set the environment variable in the system settings.
 
-### Prisma related vars ###
-DATABASE_URL="YOUR_DATABASE_URL"
+```bash
+export GALACTICA_TOKEN="your-token-here"
 ```
 
+Now all we need to do is to save the file and restart your shell, you can do this by running `source ~/.bashrc` or by simply opening a new terminal,
+for Windows users a restart is required to refresh the environment variables.
+
+### The presence status
+
+The second step of the configuration is to set the presence status of the bot, this is done by editing the `presence` properties in the `config.js` file.
+
+```js title="config.js"
+const { ActivityTypes } = require("discord.js");
+
+module.exports.config = {
+    BOT_PRESENCE: "YOUR_BOT_PRESENCE",
+    BOT_PRESENCE_TYPE: ActivityTypes.Watching
+}
+```
 ## Configuration parameters
 
-| Variable                 | type                                                                                        | Default    | Description                                                                                                                                 |
-| ------------------------ | --------------------------------------------------------------------------------------------| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `TOKEN`                  | [string](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#literal-types)  | null       | The bot's token, if you don't have one you can get one from the [ Discord Developer portal ](https://discord.com/developers/applications) . |
-| `BOT_PRESENCE`           | [string](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#literal-types)  | null       | The presence of the bot.                                                                                                                    |
-| `BOT_PRESENCE_TYPE`      | [string](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#literal-types)  | "WATCHING" | Sets the presence type of the bot.                                                                                                          |
-| `SERVER_ENABLED`         | [boolean](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#literal-types) | true       | Starts a express.js server to check the bot's current status.                                                                               |
-| `SERVER_PORT`            | [number](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#literal-types)  | 3001       | The port the server will listen to _default=3001_.                                                                                          |
-| `DATABASE_URL`           | [string](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#literal-types)  | null       | The connection string or the file pointing to your `SQL` database.                                                                          |
+### Environment variables
+
+| Variable       | type                                                                                       | Default | Description                                                                                                                                 |
+|----------------|--------------------------------------------------------------------------------------------|---------|---------------------------------------------------------------------------------------------------------------------------------------------|
+| `TOKEN`        | [string](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#literal-types) | no      | The bot's token, if you don't have one you can get one from the [ Discord Developer portal ](https://discord.com/developers/applications) . |
+| `DATABASE_URL` | [string](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#literal-types) | no      | The connection string or the file pointing to your `SQL` database.                                                                          |
+
+### Config file
+| Variable            | type                                                                                               | Default                                                                                                     | Description                                                                                                  |
+|---------------------|----------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------|
+| `BOT_PRESENCE`      | [string](https://www.typescriptlang.org/docs/handbook/2/everyday-types.html#literal-types)         | null                                                                                                        | Sets the rich presence shown on the bot                                                                      |
+| `BOT_PRESENCE_TYPE` | [Discord#ActivityTypes](https://discord-api-types.dev/api/discord-api-types-v10/enum/ActivityType) | [ActivityType#Watching](https://discord-api-types.dev/api/discord-api-types-v10/enum/ActivityType#Watching) | Sets the presence type of the bot. https://discord-api-types.dev/api/discord-api-types-v10/enum/ActivityType |
 
 ## Configuring the database
 
-Galactica uses the `SQLite` database by default which doesn't require an external database connection. It works as a part of the application.
+Galactica works with a `SQL` database, you can use any database that is supported by [Prisma](https://www.prisma.io/),
+but it is recommended to use `PostgreSQL` or `MySQL` as they are the most stable and performant.
+
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+
+### Setting the environment variable
+Another environment variable that we need to export is `DATABASE_URL`, this is the URL to your database, you can use a local database or a remote one, it's up to you.
+For any SQL database, you can use the following line to specify your db's url:
+
+<Tabs
+    defaultValue="local"
+    values={[
+        { label: "SQLite", value: "local" },
+        { label: "Remote DB", value: "remote" },
+    ]}
+>
+
+<TabItem value="local">
+
+```bash
+export DATABASE_URL="file:./galactica.db"
+```
+
+</TabItem>
+
+<TabItem value="remote">
+
+```bash
+export DATABASE_URL="provider://username:password@host:port/database"
+```
+
+</TabItem>
+
+</Tabs>
+
+After exporting the variable you must restart your shell or restart your computer for the changes to take effect.
 
 ### Using external databases
 Due to Galactica using the Prisma Object Relational Mapper, it supports most `SQL` database with little to minimal configuration,
@@ -72,17 +122,7 @@ model GuildConfigs {
 }
 ```
 
-Then you will also need to edit your `DATABASE_URL` connection string in `.env`.
-```text title=".env"
---- DATABASE_URL="file:./database.db"
-
-+++ DATABASE_URL="SQL_DATABASE"://USER:PASSWORD@HOST:PORT/DATABASE"
-```
-
 ## Pushing Prisma queries to database
-
-import Tabs from "@theme/Tabs";
-import TabItem from "@theme/TabItem";
 
 Now we need to push the changes to the database and generate the according prisma client types, to do so run:
 
@@ -160,4 +200,4 @@ thankfully galactica includes a package.json script which points to the planetsc
 
 
 ### Note for docker users
-The configuration above is not required because it's automatically done by the container build process.
+The `Dockerfile` does not have great support for database connections at the mean time, you can run the bot in hardware.
