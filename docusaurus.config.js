@@ -117,7 +117,7 @@ const config = {
         },
         {
           property: "og:image",
-          content: "og-image.png",
+          content: "https://i.ibb.co/Lk17L0Q/og-image.png",
         },
       ],
     },
