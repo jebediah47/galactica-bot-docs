@@ -39,6 +39,13 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     {
+      announcementBar: {
+        id: "supportus",
+        content:
+          "⭐️ If you would like to support galactica-bot, give it a star on <a target='_blank' rel='noopener noreferrer' href='https://github.com/jebediah47/galactica-bot'>GitHub</a>! ⭐️",
+        backgroundColor: "#104475",
+        textColor: "#FFFFFF",
+      },
       navbar: {
         title: "galactica-bot",
         items: [
@@ -56,7 +63,6 @@ const config = {
         contextualSearch: false,
         indexName: "galacticabot",
         searchParameters: {},
-        inputSelector: "h1",
         debug: true,
       },
       footer: {
@@ -103,7 +109,7 @@ const config = {
       colorMode: {
         defaultMode: "dark",
         disableSwitch: false,
-        respectPrefersColorScheme: true,
+        respectPrefersColorScheme: false,
       },
       ogImage: "og-image.png",
     },
