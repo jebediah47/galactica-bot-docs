@@ -27,11 +27,10 @@ function HomepageHeader() {
 }
 
 export default function Home() {
-  const { siteConfig } = useDocusaurusContext();
   return (
     <Layout
       title={"Galactica Bot Documentation"}
-      description="The official documentation website of the galactica Discord bot. <head />"
+      description="A free and open-source bot to get your Discord™ server up and running! Galactica is fully customizable, start using Galactica today! 🚀🚀🚀 <head />"
     >
       <HomepageHeader />
       <main>

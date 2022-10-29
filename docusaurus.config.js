@@ -105,21 +105,7 @@ const config = {
         disableSwitch: false,
         respectPrefersColorScheme: true,
       },
-      metadata: [
-        {
-          property: "og:title",
-          content: "Galactica bot documentation",
-        },
-        {
-          property: "og:description",
-          content:
-            "A free and open-source bot to get your Discord™ server up and running! Galactica is fully customizable, start using Galactica today! 🚀🚀🚀",
-        },
-        {
-          property: "og:image",
-          content: "https://i.ibb.co/Lk17L0Q/og-image.png",
-        },
-      ],
+      ogImage: "og-image.png",
     },
 };
 
