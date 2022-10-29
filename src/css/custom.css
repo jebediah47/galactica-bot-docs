@@ -26,7 +26,6 @@
   --ifm-color-primary-lightest: rgb(96, 206, 135);
   --ifm-code-font-size: 90%;
   --ifm-font-family-base: "Lexend Deca", sans-serif;
-  --ifm-font-family-base: "Lexend Deca", sans-serif;
   --ifm-font-family-monospace: "CascadiaCode";
 }
 
@@ -41,8 +40,6 @@
 .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.1);
   display: block;
-  margin: 0 calc(-1 * var(--ifm-pre-padding));
-  padding: 0 var(--ifm-pre-padding);
 }
 
 html[data-theme="dark"] {
@@ -59,7 +56,6 @@ html[data-theme="dark"] {
   --ifm-scrollbar-thumb-background-color: #686868;
   --ifm-scrollbar-thumb-hover-background-color: #7a7a7a;
   --ifm-table-stripe-background: hsla(0, 0%, 100%, 0.07);
-  --ifm-toc-border-color: var(--ifm-color-emphasis-200);
   --ifm-color-primary-contrast-background: #102445;
   --ifm-color-primary-contrast-foreground: #ebf2fc;
   --ifm-color-secondary-contrast-background: #474748;
@@ -78,4 +74,23 @@ html[data-theme="dark"] {
 
 html[data-theme="dark"] .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.3);
+}
+
+html[data-theme="light"] .menu__link {
+  color: #242526;
+}
+
+html[data-theme="light"] .menu__link--active {
+  background-color: #d5d5d5;
+}
+
+::-webkit-scrollbar:horizontal {
+  height: 10px;
+  background: transparent;
+  overflow: auto;
+}
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: transparent;
+  overflow: auto;
 }

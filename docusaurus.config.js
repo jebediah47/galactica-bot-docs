@@ -11,10 +11,9 @@ const config = {
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  favicon: "img/galactica-bot-logo.ico",
+  favicon: "favicon.ico",
   organizationName: "jebediah47",
   projectName: "galactica-bot",
-
   presets: [
     [
       "classic",
@@ -28,13 +27,18 @@ const config = {
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
         },
+        sitemap: {
+          changefreq: "weekly",
+          priority: 0.5,
+          ignorePatterns: ["/tags/**"],
+          filename: "sitemap.xml",
+        },
       }),
     ],
   ],
-
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
+    {
       navbar: {
         title: "galactica-bot",
         items: [
@@ -45,6 +49,15 @@ const config = {
             label: "Documentation",
           },
         ],
+      },
+      algolia: {
+        appId: process.env.ALGOLIA_APPID,
+        apiKey: process.env.ALGOLIA_APIKEY,
+        contextualSearch: false,
+        indexName: "galacticabot",
+        searchParameters: {},
+        inputSelector: "h1",
+        debug: true,
       },
       footer: {
         style: "dark",
@@ -90,9 +103,24 @@ const config = {
       colorMode: {
         defaultMode: "dark",
         disableSwitch: false,
-        respectPrefersColorScheme: false,
+        respectPrefersColorScheme: true,
       },
-    }),
+      metadata: [
+        {
+          property: "og:title",
+          content: "Galactica bot documentation",
+        },
+        {
+          property: "og:description",
+          content:
+            "A free and open-source bot to get your Discord™ server up and running! Galactica is fully customizable, start using Galactica today! 🚀🚀🚀",
+        },
+        {
+          property: "og:image",
+          content: "og-image.png",
+        },
+      ],
+    },
 };
 
 module.exports = config;
