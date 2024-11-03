@@ -1,6 +1,7 @@
 // @ts-nocheck
-const lightCodeTheme = require("prism-react-renderer/themes/nightOwlLight");
-const darkCodeTheme = require("prism-react-renderer/themes/nightOwl");
+const { themes } = require('prism-react-renderer');
+const lightCodeTheme = themes.nightOwlLight;
+const darkCodeTheme = themes.nightOwl;
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -42,7 +43,7 @@ const config = {
       announcementBar: {
         id: "supportus",
         content:
-          "⭐️ If you would like to support galactica-bot, give it a star on <a target='_blank' rel='noopener noreferrer' href='https://github.com/jebediah47/galactica-bot'>GitHub</a>! ⭐️",
+          "🚧 Big changes are being made to the bot and it's not known when the docs will be updated 🚧",
         backgroundColor: "#104475",
         textColor: "#FFFFFF",
       },
